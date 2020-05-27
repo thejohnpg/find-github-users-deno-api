@@ -2,7 +2,7 @@ import { Status } from 'https://deno.land/x/oak/mod.ts';
 
 export async function getUserGithubId(context: any) {
     const body = await context.request.body();
-    const username = await context.request.headers.get('username');
+    const username : string = await context.request.headers.get('username');
 
     const result = await fetch(`https://api.github.com/users/${username}`)
     const data = await result.json();
@@ -16,6 +16,4 @@ export async function getUserGithubId(context: any) {
         context.response.body = data;
         return
     }
-
-    console.log(username)
 }

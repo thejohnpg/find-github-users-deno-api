@@ -2,7 +2,7 @@ import { Status } from 'https://deno.land/x/oak/mod.ts';
 
 export async function getUserGithub(context: any) {
     const body = await context.request.body();
-    const user = body.value.user;
+    const user : string = body.value.user;
 
     const result = await fetch(`https://api.github.com/users/${user}`)
     const data = await result.json();
